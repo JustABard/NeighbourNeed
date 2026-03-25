@@ -39,5 +39,12 @@
         android:text="Switch"
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="246dp" />
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="180dp">
+
+    </com.google.android.material.chip.ChipGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
