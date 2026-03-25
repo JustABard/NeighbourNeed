@@ -21,15 +21,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CheckBox"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="514dp" />
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="87dp" />
 
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ToggleButton"
-        tools:layout_editor_absoluteX="255dp"
-        tools:layout_editor_absoluteY="632dp" />
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="503dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
