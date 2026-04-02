@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/alata</item>
+        <item>@font/anton</item>
+        <item>@font/archivo_black</item>
+        <item>@font/atkinson_hyperlegible_bold</item>
+        <item>@font/baloo_bhai</item>
+        <item>@font/press_start_2p</item>
+        <item>@font/sora_extrabold</item>
+    </array>
+</resources>
