@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@color/background_light"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_neighbour_need"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADMIN PORTAL"
+        android:letterSpacing="0.2"
+        android:textColor="@color/brand_teal"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Corporate Email"
+        android:background="@drawable/edittext_rounded"
+        android:paddingLeft="15dp"
+        android:layout_marginBottom="12dp"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Employee ID"
+        android:background="@drawable/edittext_rounded"
+        android:paddingLeft="15dp"
+        android:layout_marginBottom="12dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Internal Role"
+        android:textColor="@color/text_dark"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="5dp"/>
+
+    <RadioGroup
+        android:id="@+id/admin_role_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp">
+
+        <RadioButton
+            android:id="@+id/radio_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Developer"
+            android:textColor="@color/text_dark"
+            android:buttonTint="@color/brand_teal"/>
+
+        <RadioButton
+            android:id="@+id/radio_support"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Support Team"
+            android:textColor="@color/text_dark"
+            android:buttonTint="@color/brand_teal"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Request Admin Access"
+        android:backgroundTint="@color/brand_green"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
