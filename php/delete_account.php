@@ -15,6 +15,21 @@ if ($user_id == "") {
 try {
     $conn->beginTransaction();
 
+    $thanks_stmt = $conn->prepare(
+        "DELETE FROM volunteer_thanks
+         WHERE customer_user_id = :user_id
+            OR shopper_user_id = :user_id
+            OR order_id IN (
+                SELECT order_id
+                FROM orders
+                WHERE customer_user_id = :user_id
+                   OR shopper_user_id = :user_id
+            )"
+    );
+    $thanks_stmt->execute([
+        ":user_id" => $user_id
+    ]);
+
     $history_stmt = $conn->prepare(
         "DELETE FROM order_status_history
          WHERE order_id IN (

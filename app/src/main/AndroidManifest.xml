@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +16,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeighbourNeed"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".VolunteerProfileActivity"
+            android:exported="false"
+            android:label="Volunteer Profile" />
+        <activity
+            android:name=".AdminDashboardActivity"
+            android:exported="false"
+            android:label="Admin Dashboard" />
+        <activity
+            android:name=".ShopperCurrentOrderActivity"
+            android:exported="false"
+            android:label="Taken Order" />
+        <activity
+            android:name=".ShopperRequestDetailsActivity"
+            android:exported="false"
+            android:label="Request Details" />
+        <activity
+            android:name=".ShopperRequestsActivity"
+            android:exported="false"
+            android:label="Open Requests" />
+        <activity
+            android:name=".ShopperDashboardActivity"
+            android:exported="false"
+            android:label="Shopper Dashboard" />
         <activity
             android:name=".AccountSettingsActivity"
             android:exported="false"

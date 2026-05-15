@@ -1,6 +1,8 @@
 package com.example.neighbourneed;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,12 @@ public class OrderHistoryActivity extends AppCompatActivity {
         loadHistory();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UiPreferences.apply(findViewById(R.id.root), sessionManager);
+    }
+
     private void loadHistory() {
         String userId = sessionManager.getUserId();
         if (userId.isEmpty()) {
@@ -59,13 +67,35 @@ public class OrderHistoryActivity extends AppCompatActivity {
                     }
 
                     for (int i = 0; i < orders.length(); i++) {
-                        addHistoryText(CurrentOrderActivity.formatOrder(orders.getJSONObject(i)));
+                        addOrder(orders.getJSONObject(i));
                     }
                 } catch (JSONException e) {
                     addHistoryText(responseText);
                 }
             }
         });
+    }
+
+    private void addOrder(JSONObject order) {
+        addHistoryText(CurrentOrderActivity.formatOrder(order));
+
+        String shopperUserId = order.optString("shopper_user_id");
+        if (shopperUserId == null || shopperUserId.isEmpty() || "null".equals(shopperUserId)) {
+            return;
+        }
+
+        Button thanksButton = new Button(this);
+        thanksButton.setText("Thank Volunteer");
+        thanksButton.setTextColor(0xFF071B25);
+        thanksButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFD6C7FF));
+        thanksButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, VolunteerProfileActivity.class);
+            intent.putExtra("shopper_user_id", shopperUserId);
+            intent.putExtra("order_id", order.optString("order_id"));
+            startActivity(intent);
+        });
+        container.addView(thanksButton);
+        UiPreferences.apply(thanksButton, sessionManager);
     }
 
     private void addHistoryText(String text) {

@@ -29,9 +29,41 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sora_extrabold"
                 android:gravity="center"
-                android:text="Order History"
+                android:text="Volunteer Profile"
                 android:textColor="#102A3A"
-                android:textSize="28sp"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/volunteer_profile_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:textColor="#102A3A"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/thanks_message"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_rounded"
+                android:gravity="top"
+                android:hint="Write a thank-you message"
+                android:inputType="textMultiLine"
+                android:padding="16dp" />
+
+            <Button
+                android:id="@+id/post_thanks"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#D6C7FF"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="Post Thanks"
+                android:textColor="#071B25"
                 android:textStyle="bold" />
 
             <ScrollView
@@ -41,7 +73,7 @@
                 android:layout_weight="1">
 
                 <LinearLayout
-                    android:id="@+id/order_history_container"
+                    android:id="@+id/thanks_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />

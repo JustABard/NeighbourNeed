@@ -90,8 +90,8 @@ try {
         ]);
     } else if ($user_type == "shopper") {
         $type_stmt = $conn->prepare(
-            "INSERT INTO shoppers (user_id, id_number, vehicle_type)
-             VALUES (:user_id, :id_number, :vehicle_type)"
+            "INSERT INTO shoppers (user_id, id_number, vehicle_type, approved)
+             VALUES (:user_id, :id_number, :vehicle_type, FALSE)"
         );
         $type_stmt->execute([
             ":user_id" => $user_id,

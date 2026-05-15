@@ -7,16 +7,15 @@ $user_id = $_POST["user_id"] ?? "";
 if ($user_id == "") {
     echo json_encode([
         "success" => false,
-        "message" => "Missing user"
+        "message" => "Missing shopper"
     ]);
     exit;
 }
 
 try {
     $stmt = $conn->prepare(
-        "SELECT user_id, full_name, email, user_type, default_location,
-                default_latitude, default_longitude, created_at
-         FROM users
+        "UPDATE shoppers
+         SET approved = TRUE
          WHERE user_id = :user_id"
     );
 
@@ -24,24 +23,14 @@ try {
         ":user_id" => $user_id
     ]);
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$user) {
-        echo json_encode([
-            "success" => false,
-            "message" => "Account not found"
-        ]);
-        exit;
-    }
-
     echo json_encode([
         "success" => true,
-        "user" => $user
+        "message" => "Shopper approved"
     ]);
 } catch (PDOException $e) {
     echo json_encode([
         "success" => false,
-        "message" => "Could not load account"
+        "message" => "Could not approve shopper"
     ]);
 }
 ?>

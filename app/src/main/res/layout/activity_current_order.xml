@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C7D3D9"
@@ -54,6 +55,18 @@
                     android:text="Refresh"
                     android:textColor="#071B25"
                     android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/current_order_volunteer_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="14dp"
+                    android:backgroundTint="#D6C7FF"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Volunteer Profile"
+                    android:textColor="#071B25"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

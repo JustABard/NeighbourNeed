@@ -6,11 +6,13 @@ package com.example.neighbourneed.ui.login;
 class LoggedInUserView {
     private String userId;
     private String displayName;
+    private String userType;
     //... other data fields that may be accessible to the UI
 
-    LoggedInUserView(String userId, String displayName) {
+    LoggedInUserView(String userId, String displayName, String userType) {
         this.userId = userId;
         this.displayName = displayName;
+        this.userType = userType;
     }
 
     String getUserId() {
@@ -19,5 +21,9 @@ class LoggedInUserView {
 
     String getDisplayName() {
         return displayName;
+    }
+
+    String getUserType() {
+        return userType;
     }
 }

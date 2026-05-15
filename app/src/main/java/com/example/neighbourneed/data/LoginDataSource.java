@@ -49,7 +49,8 @@ public class LoginDataSource {
 
                 LoggedInUser user = new LoggedInUser(
                         String.valueOf(jsonObject.optInt("user_id")),
-                        jsonObject.optString("full_name")
+                        jsonObject.optString("full_name"),
+                        jsonObject.optString("user_type", "customer")
                 );
                 return new Result.Success<>(user);
             }

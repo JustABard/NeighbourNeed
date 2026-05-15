@@ -6,6 +6,8 @@ $user_id = $_POST["user_id"] ?? "";
 $order_description = trim($_POST["order_description"] ?? "");
 $pickup_address = trim($_POST["pickup_address"] ?? "");
 $delivery_address = trim($_POST["delivery_address"] ?? "");
+$delivery_latitude = trim($_POST["delivery_latitude"] ?? "");
+$delivery_longitude = trim($_POST["delivery_longitude"] ?? "");
 $notes = trim($_POST["notes"] ?? "");
 
 if ($user_id == "" || $order_description == "" || $delivery_address == "") {
@@ -20,8 +22,11 @@ try {
     $conn->beginTransaction();
 
     $stmt = $conn->prepare(
-        "INSERT INTO orders (customer_user_id, order_description, pickup_address, delivery_address, notes, status)
-         VALUES (:customer_user_id, :order_description, :pickup_address, :delivery_address, :notes, 'pending')
+        "INSERT INTO orders (customer_user_id, order_description, pickup_address,
+                             delivery_address, delivery_latitude, delivery_longitude, notes, status)
+         VALUES (:customer_user_id, :order_description, :pickup_address,
+                 :delivery_address, NULLIF(:delivery_latitude, '')::double precision,
+                 NULLIF(:delivery_longitude, '')::double precision, :notes, 'pending')
          RETURNING order_id"
     );
 
@@ -30,6 +35,8 @@ try {
         ":order_description" => $order_description,
         ":pickup_address" => $pickup_address,
         ":delivery_address" => $delivery_address,
+        ":delivery_latitude" => $delivery_latitude,
+        ":delivery_longitude" => $delivery_longitude,
         ":notes" => $notes
     ]);
 

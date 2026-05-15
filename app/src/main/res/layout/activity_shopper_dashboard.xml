@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C7D3D9">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#F7FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/shopper_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sora_extrabold"
+                android:gravity="center"
+                android:text="Shopper Home"
+                android:textColor="#102A3A"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/view_requests"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="#71D7C7"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="View Open Requests"
+                android:textColor="#071B25"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/view_taken_order"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="#84C8FF"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="My Taken Order"
+                android:textColor="#071B25"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/shopper_account_settings"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="#D6C7FF"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="Account Settings"
+                android:textColor="#071B25"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/shop_img" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

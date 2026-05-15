@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/pending_shopper_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -29,9 +30,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sora_extrabold"
                 android:gravity="center"
-                android:text="Order History"
+                android:text="Approve Shoppers"
                 android:textColor="#102A3A"
-                android:textSize="28sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <ScrollView
@@ -41,11 +42,12 @@
                 android:layout_weight="1">
 
                 <LinearLayout
-                    android:id="@+id/order_history_container"
+                    android:id="@+id/admin_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
             </ScrollView>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

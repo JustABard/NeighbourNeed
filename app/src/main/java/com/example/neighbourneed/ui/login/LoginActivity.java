@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,8 +25,9 @@ import android.widget.Toast;
 
 import com.example.neighbourneed.MainActivity;
 import com.example.neighbourneed.R;
-import com.example.neighbourneed.ui.login.LoginViewModel;
-import com.example.neighbourneed.ui.login.LoginViewModelFactory;
+import com.example.neighbourneed.AdminDashboardActivity;
+import com.example.neighbourneed.ShopperDashboardActivity;
+import com.example.neighbourneed.data.SessionManager;
 import com.example.neighbourneed.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -80,7 +80,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent;
+                    String userType = loginResult.getSuccess().getUserType();
+                    if ("shopper".equals(userType)) {
+                        intent = new Intent(LoginActivity.this, ShopperDashboardActivity.class);
+                    } else if ("admin".equals(userType)) {
+                        intent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
+                    } else {
+                        intent = new Intent(LoginActivity.this, MainActivity.class);
+                    }
                     startActivity(intent);
                     setResult(Activity.RESULT_OK);
                     finish();
@@ -139,11 +147,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = "Welcome " + model.getDisplayName() + "!";
-        SharedPreferences preferences = getSharedPreferences("neighbourneed_session", MODE_PRIVATE);
-        preferences.edit()
-                .putString("user_id", model.getUserId())
-                .putString("full_name", model.getDisplayName())
-                .apply();
+        SessionManager sessionManager = new SessionManager(this);
+        sessionManager.saveLogin(model.getUserId(), model.getDisplayName(), model.getUserType());
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 

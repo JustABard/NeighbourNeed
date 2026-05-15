@@ -73,6 +73,12 @@ public class PlaceOrderActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UiPreferences.apply(findViewById(R.id.root), sessionManager);
+    }
+
     private void addItem() {
         String itemName = itemNameEditText.getText().toString().trim();
         String priceEstimate = itemPriceEstimateEditText.getText().toString().trim();
@@ -122,6 +128,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 textView.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
             }
             itemListLayout.addView(textView);
+            UiPreferences.apply(textView, sessionManager);
         }
     }
 
@@ -153,6 +160,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 .add("order_description", buildOrderDescription())
                 .add("pickup_address", preferredStore)
                 .add("delivery_address", deliveryAddress)
+                .add("delivery_latitude", sessionManager.getDefaultLatitude())
+                .add("delivery_longitude", sessionManager.getDefaultLongitude())
                 .add("notes", notes);
 
         api.post("create_order.php", formBuilder, this::handleCreateOrderResponse);
