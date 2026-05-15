@@ -1,9 +1,9 @@
 package com.example.neighbourneed;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,33 +32,29 @@ public class MainActivity extends AppCompatActivity {
         placeOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showComingSoon("Place an order");
+                startActivity(new Intent(MainActivity.this, PlaceOrderActivity.class));
             }
         });
 
         currentOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showComingSoon("Current order");
+                startActivity(new Intent(MainActivity.this, CurrentOrderActivity.class));
             }
         });
 
         orderHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showComingSoon("Order history");
+                startActivity(new Intent(MainActivity.this, OrderHistoryActivity.class));
             }
         });
 
         accountSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showComingSoon("Account settings");
+                startActivity(new Intent(MainActivity.this, AccountSettingsActivity.class));
             }
         });
-    }
-
-    private void showComingSoon(String screenName) {
-        Toast.makeText(this, screenName + " screen coming next", Toast.LENGTH_SHORT).show();
     }
 }

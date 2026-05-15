@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -138,7 +139,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = "Welcome " + model.getDisplayName() + "!";
-        // TODO : initiate successful logged in experience
+        SharedPreferences preferences = getSharedPreferences("neighbourneed_session", MODE_PRIVATE);
+        preferences.edit()
+                .putString("user_id", model.getUserId())
+                .putString("full_name", model.getDisplayName())
+                .apply();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C7D3D9"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/order_history_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sora_extrabold"
+            android:gravity="center"
+            android:text="Order History"
+            android:textColor="#102A3A"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
