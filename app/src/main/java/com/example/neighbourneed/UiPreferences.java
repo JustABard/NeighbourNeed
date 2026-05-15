@@ -10,9 +10,6 @@ import com.example.neighbourneed.data.SessionManager;
 
 class UiPreferences {
 
-    private static final int TAG_ORIGINAL_SIZE = 1001001;
-    private static final int TAG_ORIGINAL_STYLE = 1001002;
-
     static void apply(View root, SessionManager sessionManager) {
         applyToView(root, sessionManager.isBoldTextEnabled());
     }
@@ -20,14 +17,14 @@ class UiPreferences {
     private static void applyToView(View view, boolean boldEnabled) {
         if (view instanceof TextView) {
             TextView textView = (TextView) view;
-            if (textView.getTag(TAG_ORIGINAL_SIZE) == null) {
-                textView.setTag(TAG_ORIGINAL_SIZE, textView.getTextSize());
+            if (textView.getTag(R.id.tag_original_text_size) == null) {
+                textView.setTag(R.id.tag_original_text_size, textView.getTextSize());
                 Typeface typeface = textView.getTypeface();
-                textView.setTag(TAG_ORIGINAL_STYLE, typeface == null ? Typeface.NORMAL : typeface.getStyle());
+                textView.setTag(R.id.tag_original_text_style, typeface == null ? Typeface.NORMAL : typeface.getStyle());
             }
 
-            float originalSize = (float) textView.getTag(TAG_ORIGINAL_SIZE);
-            int originalStyle = (int) textView.getTag(TAG_ORIGINAL_STYLE);
+            float originalSize = (float) textView.getTag(R.id.tag_original_text_size);
+            int originalStyle = (int) textView.getTag(R.id.tag_original_text_style);
             if (boldEnabled) {
                 textView.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
