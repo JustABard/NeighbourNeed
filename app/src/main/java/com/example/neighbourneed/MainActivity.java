@@ -1,6 +1,9 @@
 package com.example.neighbourneed;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +23,42 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button placeOrderButton = findViewById(R.id.place_order);
+        Button currentOrderButton = findViewById(R.id.current_order);
+        Button orderHistoryButton = findViewById(R.id.order_history);
+        Button accountSettingsButton = findViewById(R.id.account_settings);
+
+        placeOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showComingSoon("Place an order");
+            }
+        });
+
+        currentOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showComingSoon("Current order");
+            }
+        });
+
+        orderHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showComingSoon("Order history");
+            }
+        });
+
+        accountSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showComingSoon("Account settings");
+            }
+        });
+    }
+
+    private void showComingSoon(String screenName) {
+        Toast.makeText(this, screenName + " screen coming next", Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">NeighbourNeed</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_full_name">Full name</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>
+    <string name="action_register_cust">Register as customer</string>
+    <string name="action_register_shop">Register as shopper</string>
+    <string name="action_register_admin">Register as admin</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="customer_dashboard_title">Customer Home</string>
+    <string name="customer_dashboard_subtitle">What would you like to do today?</string>
+    <string name="action_place_order">Place an Order</string>
+    <string name="action_current_order">View Current Order</string>
+    <string name="action_order_history">Order History</string>
+    <string name="action_account_settings">Account Settings</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
