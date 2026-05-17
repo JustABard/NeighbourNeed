@@ -15,8 +15,8 @@ if ($user_id == "") {
 try {
     $stmt = $conn->prepare(
         "SELECT o.order_id, o.order_description, o.pickup_address, o.delivery_address,
-                o.delivery_latitude, o.delivery_longitude, o.notes, o.status,
-                o.created_at, o.completed_at, o.customer_user_id,
+                o.delivery_latitude, o.delivery_longitude, o.shopper_latitude,
+                o.shopper_longitude, o.notes, o.status, o.created_at, o.completed_at, o.customer_user_id,
                 customer.full_name AS customer_name
          FROM orders o
          JOIN users customer ON customer.user_id = o.customer_user_id

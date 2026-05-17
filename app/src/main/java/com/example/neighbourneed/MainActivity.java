@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.customer_dashboard_title);
         sessionManager = new SessionManager(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         Button currentOrderButton = findViewById(R.id.current_order);
         Button orderHistoryButton = findViewById(R.id.order_history);
         Button accountSettingsButton = findViewById(R.id.account_settings);
+        Button logoutButton = findViewById(R.id.logout);
+        View supportButton = findViewById(R.id.support_button);
 
         placeOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AccountSettingsActivity.class));
             }
         });
+
+        logoutButton.setOnClickListener(view -> LogoutHelper.logout(this, sessionManager));
+        supportButton.setOnClickListener(view -> startActivity(new Intent(this, SupportTicketsActivity.class)));
     }
 
     @Override

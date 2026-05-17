@@ -100,8 +100,8 @@ try {
         ]);
     } else if ($user_type == "admin") {
         $type_stmt = $conn->prepare(
-            "INSERT INTO admins (user_id, employee_id, admin_role)
-             VALUES (:user_id, :employee_id, :admin_role)"
+            "INSERT INTO admins (user_id, employee_id, admin_role, verified)
+             VALUES (:user_id, :employee_id, :admin_role, TRUE)"
         );
         $type_stmt->execute([
             ":user_id" => $user_id,

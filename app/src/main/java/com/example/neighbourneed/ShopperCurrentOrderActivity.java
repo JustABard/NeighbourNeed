@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.neighbourneed.data.SessionManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,11 +54,47 @@ public class ShopperCurrentOrderActivity extends AppCompatActivity {
                     intent.putExtra("mode", "taken");
                     startActivity(intent);
                 });
+                loadMessages(order.optString("order_id"));
                 UiPreferences.apply(findViewById(R.id.root), sessionManager);
             } catch (JSONException e) {
                 addText(responseText);
             }
         }));
+    }
+
+    private void loadMessages(String orderId) {
+        api.post("order_messages.php",
+                new FormBody.Builder()
+                        .add("order_id", orderId)
+                        .add("user_id", sessionManager.getUserId()),
+                (networkSuccess, responseText) -> runOnUiThread(() -> {
+                    try {
+                        JSONObject response = new JSONObject(responseText);
+                        if (!response.optBoolean("success")) {
+                            addText(response.optString("message", ""));
+                            return;
+                        }
+
+                        JSONArray messages = response.getJSONArray("messages");
+                        if (messages.length() == 0) {
+                            addText("Messages:\nNo messages yet.");
+                            return;
+                        }
+
+                        StringBuilder builder = new StringBuilder("Messages:\n");
+                        for (int i = 0; i < messages.length(); i++) {
+                            JSONObject message = messages.getJSONObject(i);
+                            builder.append(message.optString("sender_name"))
+                                    .append(": ")
+                                    .append(message.optString("message"))
+                                    .append("\n");
+                        }
+                        builder.append("\nTap the order details to reply.");
+                        addText(builder.toString().trim());
+                    } catch (JSONException e) {
+                        addText(responseText);
+                    }
+                }));
     }
 
     private void addText(String text) {

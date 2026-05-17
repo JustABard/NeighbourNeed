@@ -1,5 +1,7 @@
 package com.example.neighbourneed.ui.login;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,8 +38,10 @@ public class ShopperRegisterActivity extends AppCompatActivity {
         idNumberEditText = findViewById(R.id.shopper_id_number);
         emailEditText = findViewById(R.id.shopper_email);
         passwordEditText = findViewById(R.id.shopper_password);
+        ImageButton togglePasswordButton = findViewById(R.id.shopper_toggle_password_visibility);
         vehicleSpinner = findViewById(R.id.vehicle_spinner);
         registerButton = findViewById(R.id.register_shopper);
+        PasswordVisibilityToggle.attach(passwordEditText, togglePasswordButton);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
@@ -99,11 +104,25 @@ public class ShopperRegisterActivity extends AppCompatActivity {
             @Override
             public void run() {
                 registerButton.setEnabled(true);
-                Toast.makeText(ShopperRegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                 if (success) {
-                    finish();
+                    showReturnToLoginDialog(message);
+                } else {
+                    Toast.makeText(ShopperRegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void showReturnToLoginDialog(String message) {
+        new AlertDialog.Builder(this)
+                .setTitle("Registration successful")
+                .setMessage(message + "\n\nShopper accounts must be approved by an admin before taking requests.")
+                .setCancelable(false)
+                .setPositiveButton("Return to login", (dialogInterface, i) -> {
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                })
+                .show();
     }
 }

@@ -1,10 +1,13 @@
 package com.example.neighbourneed;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.neighbourneed.data.SessionManager;
@@ -64,20 +67,35 @@ public class ShopperRequestsActivity extends AppCompatActivity {
     }
 
     private void addOrder(JSONObject order) {
+        CardView cardView = new CardView(this);
+        cardView.setCardBackgroundColor(Color.WHITE);
+        cardView.setRadius(dp(14));
+        cardView.setCardElevation(dp(4));
+        cardView.setUseCompatPadding(true);
+
+        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        cardParams.setMargins(0, 0, 0, dp(14));
+
         TextView textView = new TextView(this);
         textView.setText("Order #" + order.optString("order_id") +
                 "\nCustomer: " + order.optString("customer_name") +
                 "\nDelivery: " + order.optString("delivery_address") +
-                "\nStatus: " + order.optString("status"));
+                "\nStatus: " + order.optString("status") +
+                "\n\nTap to view and accept");
         textView.setTextColor(0xFF102A3A);
         textView.setTextSize(16);
-        textView.setPadding(16, 18, 16, 18);
-        textView.setOnClickListener(view -> {
+        textView.setPadding(dp(18), dp(16), dp(18), dp(16));
+
+        cardView.setOnClickListener(view -> {
             Intent intent = new Intent(this, ShopperRequestDetailsActivity.class);
             intent.putExtra("order_id", order.optString("order_id"));
             startActivity(intent);
         });
-        listLayout.addView(textView);
+        cardView.addView(textView);
+        listLayout.addView(cardView, cardParams);
         UiPreferences.apply(textView, sessionManager);
     }
 
@@ -89,5 +107,9 @@ public class ShopperRequestsActivity extends AppCompatActivity {
         textView.setPadding(12, 12, 12, 12);
         listLayout.addView(textView);
         UiPreferences.apply(textView, sessionManager);
+    }
+
+    private int dp(int value) {
+        return (int) (value * getResources().getDisplayMetrics().density + 0.5f);
     }
 }

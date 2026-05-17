@@ -15,14 +15,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:cardBackgroundColor="#F7FFFFFF"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="24dp">
 
@@ -45,6 +45,35 @@
                     android:textColor="#102A3A"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/current_order_messages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:textColor="#102A3A"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/current_order_message_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/edittext_rounded"
+                    android:hint="Message shopper"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+
+                <Button
+                    android:id="@+id/send_current_order_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#84C8FF"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Send Message"
+                    android:textColor="#071B25"
+                    android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/refresh_current_order"
                     android:layout_width="match_parent"
@@ -54,6 +83,29 @@
                     android:fontFamily="@font/sora_extrabold"
                     android:text="Refresh"
                     android:textColor="#071B25"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/track_shopper"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="14dp"
+                    android:backgroundTint="#F6C86E"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Track Shopper"
+                    android:textColor="#071B25"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/cancel_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="14dp"
+                    android:backgroundTint="#E57373"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Cancel Order"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
 
                 <Button

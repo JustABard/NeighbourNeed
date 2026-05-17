@@ -17,6 +17,14 @@
         android:theme="@style/Theme.NeighbourNeed"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SupportTicketDetailActivity"
+            android:exported="false"
+            android:label="Support Ticket" />
+        <activity
+            android:name=".SupportTicketsActivity"
+            android:exported="false"
+            android:label="Support Tickets" />
+        <activity
             android:name=".VolunteerProfileActivity"
             android:exported="false"
             android:label="Volunteer Profile" />
@@ -84,7 +92,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/customer_dashboard_title">
         </activity>
 
         <meta-data

@@ -36,10 +36,16 @@ public class LoginDataSource {
 
             try (Response response = client.newCall(request).execute()) {
                 if (!response.isSuccessful() || response.body() == null) {
-                    return new Result.Error(new IOException("Server error"));
+                    return new Result.Error(new IOException(response.code() == 404
+                            ? "login.php was not found on the server"
+                            : "Server error while logging in"));
                 }
 
-                String responseText = response.body().string();
+                String responseText = response.body().string().trim();
+                if (!responseText.startsWith("{")) {
+                    return new Result.Error(new IOException("Invalid login server response. Check that login.php is uploaded and returns JSON."));
+                }
+
                 JSONObject jsonObject = new JSONObject(responseText);
 
                 if (!jsonObject.optBoolean("success")) {
@@ -54,8 +60,10 @@ public class LoginDataSource {
                 );
                 return new Result.Success<>(user);
             }
-        } catch (IOException | JSONException e) {
-            return new Result.Error(new IOException("Error logging in", e));
+        } catch (IOException e) {
+            return new Result.Error(e);
+        } catch (JSONException e) {
+            return new Result.Error(new IOException("Invalid login server response", e));
         }
     }
 

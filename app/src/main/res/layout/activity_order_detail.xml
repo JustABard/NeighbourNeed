@@ -41,12 +41,26 @@
                 android:layout_marginTop="18dp"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/order_detail_text"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#102A3A"
-                    android:textSize="16sp" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/order_detail_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#102A3A"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_detail_messages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:textColor="#102A3A"
+                        android:textSize="15sp" />
+                </LinearLayout>
             </ScrollView>
 
             <Button
@@ -78,7 +92,40 @@
                 android:layout_marginTop="12dp"
                 android:backgroundTint="#F6C86E"
                 android:fontFamily="@font/sora_extrabold"
-                android:text="Mark Completed"
+                android:text="Next Stage"
+                android:textColor="#071B25"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/update_location_snapshot"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#71D7C7"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="Update Location Snapshot"
+                android:textColor="#071B25"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/order_message_input"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_rounded"
+                android:hint="Message customer"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+
+            <Button
+                android:id="@+id/send_order_message"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#84C8FF"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="Send Message"
                 android:textColor="#071B25"
                 android:textStyle="bold" />
 
@@ -91,6 +138,17 @@
                 android:fontFamily="@font/sora_extrabold"
                 android:text="Volunteer Profile"
                 android:textColor="#071B25"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/release_order"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E57373"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="Release Request"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

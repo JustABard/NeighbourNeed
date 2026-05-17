@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +48,11 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
+        final ImageButton togglePasswordButton = binding.togglePasswordVisibility;
         final Button loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
         final Button registerButton = binding.register;
+        PasswordVisibilityToggle.attach(passwordEditText, togglePasswordButton);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override

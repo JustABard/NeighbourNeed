@@ -26,14 +26,76 @@
             android:padding="24dp">
 
             <TextView
+                android:id="@+id/admin_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sora_extrabold"
                 android:gravity="center"
-                android:text="Approve Shoppers"
+                android:text="Admin Dashboard"
                 android:textColor="#102A3A"
                 android:textSize="26sp"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/view_pending_shoppers"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:backgroundTint="#F6C86E"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Pending Shoppers"
+                    android:textColor="#071B25"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/view_customers"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#84C8FF"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Current Customers"
+                    android:textColor="#071B25"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/view_shoppers"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#71D7C7"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Current Shoppers"
+                    android:textColor="#071B25"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/view_admins"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#D6C7FF"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Current Admins"
+                    android:textColor="#071B25"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/view_support_tickets"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#102A3A"
+                    android:fontFamily="@font/sora_extrabold"
+                    android:text="Support Tickets"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -47,6 +109,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
             </ScrollView>
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="#E57373"
+                android:fontFamily="@font/sora_extrabold"
+                android:text="@string/action_logout"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

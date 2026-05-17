@@ -45,7 +45,19 @@ class RegistrationClient {
                     return;
                 }
 
-                String responseText = response.body().string();
+                String responseText = response.body().string().trim();
+                if (!response.isSuccessful()) {
+                    callback.onResult(false, response.code() == 404
+                            ? "register.php was not found on the server"
+                            : "Server error while registering");
+                    return;
+                }
+
+                if (!responseText.startsWith("{")) {
+                    callback.onResult(false, "Invalid registration server response. Check that register.php is uploaded and returns JSON.");
+                    return;
+                }
+
                 try {
                     JSONObject jsonObject = new JSONObject(responseText);
                     boolean success = jsonObject.optBoolean("success");

@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Create the account that matches how you will use NeighbourNeed."
+                android:text="Create the account that matches how you will use NeighborNeed."
                 android:textColor="#5A6870"
                 android:textSize="18sp" />
 
